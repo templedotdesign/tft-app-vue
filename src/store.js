@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
     resourcesView: false,
     suppliersView: false,
     learningView: false,
+    editMode: false,
     agencyKey: 0,
     username: '',
     avatarSrc: '',
@@ -42,6 +43,10 @@ export const store = new Vuex.Store({
     },
     learningView(state) {
       return state.learningView
+    },
+    editMode(state) {
+      console.log(state.editMode)
+      return state.editMode
     },
     agencyKey(state) {
       return state.agencyKey
@@ -75,6 +80,9 @@ export const store = new Vuex.Store({
     changeLearningView(state, visability) {
       state.learningView = visability
     },
+    changeEditMode(state, isActive) {
+      state.editMode = isActive
+    },
     changeAgencyKey(state, newKey) {
       state.agencyKey = newKey
     },
@@ -106,6 +114,9 @@ export const store = new Vuex.Store({
     },
     changeLearningView(context, visability) {
       context.commit('changeLearningView', visability)
+    },
+    changeEditMode(context, isActive) {
+      context.commit('changeEditMode', isActive)
     },
     changeAgencyKey(context, newKey) {
       context.commit('changeAgencyKey', newKey)

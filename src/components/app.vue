@@ -5,6 +5,7 @@
     <footerVue v-if='loggedIn'></footerVue>
     <registrationVue v-else></registrationVue>
     <resourcesVue v-show='loggedIn && resourcesView'></resourcesVue>
+    <suppliersVue v-show='loggedIn && suppliersView'></suppliersVue>
     <learningVue v-show='loggedIn && learningView'></learningVue>
   </div>
 </template>
@@ -14,6 +15,7 @@ import headerVue from './header'
 import footerVue from './footer'
 import sidebarVue from './sidebar'
 import resourcesVue from './resources'
+import suppliersVue from './suppliers'
 import learningVue from './learning'
 import registrationVue from './registration'
 
@@ -26,6 +28,7 @@ export default {
     footerVue,
     sidebarVue,
     resourcesVue,
+    suppliersVue,
     learningVue,
     registrationVue
   },
@@ -49,6 +52,9 @@ export default {
     },
     resourcesView() {
       return this.$store.getters.resourcesView
+    },
+    suppliersView() {
+      return this.$store.getters.suppliersView
     },
     learningView() {
       return this.$store.getters.learningView
