@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import headerVue from './header'
-import footerVue from './footer'
-import sidebarVue from './sidebar'
-import resourcesVue from './resources'
-import suppliersVue from './suppliers'
-import learningVue from './learning'
-import registrationVue from './registration'
-import usersVue from './users'
+import headerVue from './frame/header'
+import footerVue from './frame/footer'
+import sidebarVue from './frame/sidebar'
+import resourcesVue from './views/resources'
+import suppliersVue from './views/suppliers'
+import learningVue from './views/learning'
+import registrationVue from './views/registration'
+import usersVue from './views/users'
 
 import * as firebaseUtility from '../utils/firebaseUtility'
 

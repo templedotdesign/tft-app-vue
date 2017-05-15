@@ -12,7 +12,8 @@
 </template>
 
 <script>
-  import * as firebase from '../utils/firebaseUtility'
+  import * as firebase from '../../utils/firebaseUtility'
+
   export default {
     name: 'registrationVue',
     data() {

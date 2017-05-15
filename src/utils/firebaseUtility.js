@@ -20,12 +20,6 @@ export const learningResourcesRef = database.ref('learningResources')
 export const suppliersRef = database.ref('suppliers')
 export const usersRef = database.ref('users')
 
-export function getAdminKey() {
-  adminKeyRef.on('value', data => {
-    return data.val()
-  })
-}
-
 export function writeSupplierData(supplierId, newSupplier) {
   firebase.database().ref('suppliers/' + supplierId).set({
     name: newSupplier.name,

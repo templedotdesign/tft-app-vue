@@ -1,5 +1,8 @@
 <template>
   <div id='users'>
+    <div v-show='toolsVisible'>
+      <adminToolsVue></adminToolsVue>
+    </div>
     <ul>
       <li v-for='user in users'>
         <p v-text='user.name'></p>
@@ -9,11 +12,19 @@
 </template>
 
 <script>
+  import adminToolsVue from '../widgets/adminTools'
+
   export default {
     name: 'usersVue',
+    components: {
+      adminToolsVue
+    },
     computed: {
       users() {
         return this.$store.getters.users
+      },
+      toolsVisible() {
+        return this.$store.getters.toolsVisible
       }
     }
   }

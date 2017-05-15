@@ -1,10 +1,7 @@
 <template>
   <div id='suppliersVue'>
-    <div id='suppliers-editor' v-show='toolsVisible'>
-      <div id='editor-tools'>
-        <h1 @click='toggleAddMode()'><i class="fa fa-plus" aria-hidden="true"></i></h1>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      </div>
+    <div v-show='toolsVisible'>
+      <adminToolsVue></adminToolsVue>
       <div v-if='toolsVisible && addMode'>
         <input v-model='supplierName' type='text' placeholder="Name:"/>
         <input v-model='address'type='text' placeholder="URL:"/>
@@ -27,10 +24,14 @@
 </template>
 
 <script>
-  import { writeSupplierData } from '../utils/firebaseUtility'
+  import { writeSupplierData } from '../../utils/firebaseUtility'
+  import adminToolsVue  from '../widgets/adminTools'
 
   export default {
     name: 'suppliersVue',
+    components: {
+      adminToolsVue
+    },
     data() {
       return {
         supplierName: '',
@@ -45,13 +46,6 @@
       }
     },
     methods: {
-      toggleAddMode() {
-        if(this.$store.getters.addMode) {
-          this.$store.dispatch('changeAddMode', false)
-        } else {
-          this.$store.dispatch('changeAddMode', true)
-        }
-      },
       addNewSupplier() {
         let supplier = {}
         supplier.consortium = this.consortiumString == 'y'
@@ -98,12 +92,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  i {
-    font-size: 1.3rem;
-  }
-
-  #editor-tools {
-    display: flex;
   }
 </style>

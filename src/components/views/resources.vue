@@ -1,10 +1,7 @@
 <template>
   <div id='resources'>
-    <div id='resources-editor' v-show='toolsVisible'>
-      <div>
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      </div>
+    <div v-show='toolsVisible'>
+      <adminToolsVue></adminToolsVue>
     </div>
     <ul>
       <li v-for='resource in resources'>
@@ -15,8 +12,13 @@
 </template>
 
 <script>
+  import adminToolsVue from '../widgets/adminTools'
+
   export default {
     name: 'resourcesVue',
+    components: {
+      adminToolsVue
+    },
     computed: {
       resources() {
         return this.$store.getters.resources
