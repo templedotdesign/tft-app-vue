@@ -7,6 +7,7 @@
     <resourcesVue v-show='loggedIn && resourcesView'></resourcesVue>
     <suppliersVue v-show='loggedIn && suppliersView'></suppliersVue>
     <learningVue v-show='loggedIn && learningView'></learningVue>
+    <usersVue v-show='loggedIn && usersView'></usersVue>
   </div>
 </template>
 
@@ -18,8 +19,9 @@ import resourcesVue from './resources'
 import suppliersVue from './suppliers'
 import learningVue from './learning'
 import registrationVue from './registration'
+import usersVue from './users'
 
-import { agencyKeyRef, resourcesRef, learningResourcesRef } from '../utils/firebaseUtility'
+import * as firebaseUtility from '../utils/firebaseUtility'
 
 export default {
   name: 'app',
@@ -30,20 +32,33 @@ export default {
     resourcesVue,
     suppliersVue,
     learningVue,
-    registrationVue
+    registrationVue,
+    usersVue
   },
   beforeCreate() {
-    agencyKeyRef.on('value', data => {
+    firebaseUtility.adminKeyRef.on('value', data => {
+      const adminKey = data.val()
+      this.$store.dispatch('changeAdminKey', adminKey)
+    })
+    firebaseUtility.agencyKeyRef.on('value', data => {
       const agencyKey = data.val()
       this.$store.dispatch('changeAgencyKey', agencyKey)
     })
-    resourcesRef.on('value', data => {
+    firebaseUtility.resourcesRef.on('value', data => {
       const resources = data.val()
       this.$store.dispatch('changeResources', resources)
-    }),
-    learningResourcesRef.on('value', data => {
+    })
+    firebaseUtility.learningResourcesRef.on('value', data => {
       const resources = data.val()
       this.$store.dispatch('changeLearningResources', resources)
+    })
+    firebaseUtility.suppliersRef.on('value', data => {
+      const suppliers = data.val()
+      this.$store.dispatch('changeSuppliers', suppliers)
+    })
+    firebaseUtility.usersRef.on('value', data => {
+      const users = data.val()
+      this.$store.dispatch('changeUsers', users)
     })
   },
   computed: {
@@ -58,6 +73,9 @@ export default {
     },
     learningView() {
       return this.$store.getters.learningView
+    },
+    usersView() {
+      return this.$store.getters.usersView
     }
   }
 }
@@ -80,9 +98,5 @@ export default {
     font-family: 'Raleway', sans-serif;
     height: 100vh;
     width: 100vw;
-  }
-
-  #test {
-    margin-top: 5rem;
   }
 </style>

@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div id='learning'>
+    <div id='resources-editor' v-show='toolsVisible'>
+      <div>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </div>
+    </div>
     <ul>
       <li v-for='resource in resources'>
         <a target='_blank' :href='resource.url' class='resource-link'>{{resource.name}}</a>
@@ -14,19 +20,23 @@
     computed: {
       resources() {
         return this.$store.getters.learningResources
+      },
+      toolsVisible() {
+        return this.$store.getters.toolsVisible
       }
     }
   }
 </script>
 
 <style scoped>
-div {
-  padding-top: 5rem;
-
+#learning {
+  padding-top: 3.5rem;
+  color: #CF5300;
   height: calc(100vh - 4.5rem);
   width: 80%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

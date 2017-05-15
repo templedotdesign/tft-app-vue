@@ -23,9 +23,23 @@ export default {
   learningView(state) {
     return state.learningView
   },
+  usersView(state) {
+    return state.usersView
+  },
+  addMode(state) {
+    return state.addMode
+  },
   editMode(state) {
-    console.log(state.editMode)
     return state.editMode
+  },
+  adminMode(state) {
+    return state.adminMode
+  },
+  toolsVisible(state) {
+    return state.toolsVisible
+  },
+  adminKey(state) {
+    return state.adminKey
   },
   agencyKey(state) {
     return state.agencyKey
@@ -41,5 +55,11 @@ export default {
   },
   learningResources(state) {
     return state.learningResources
+  },
+  suppliers(state) {
+    return state.suppliers
+  },
+  users(state) {
+    return state.users
   }
 }

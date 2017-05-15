@@ -5,7 +5,7 @@
     </div>
     <div id='registration'>
       <input v-model='nameInput' class='reg-input' type='text' placeholder='enter username...'/>
-      <input v-model='passwordInput' class='reg-input' type='text' placeholder='enter password...'/>
+      <input v-model='passwordInput' class='reg-input' type='text' placeholder='enter passkey...'/>
       <button class='reg-btn' @click='login()'>Log In</button>
     </div>
   </div>
@@ -23,7 +23,7 @@
     },
     methods: {
       login() {
-        if(this.passwordInput == this.agencyKey) {
+        if(this.passwordInput == this.agencyKey || this.passwordInput == this.adminKey) {
           switch(this.nameInput) {
             case 'aaron-condon':
               firebase.imgAaronCondon.getDownloadURL().then((url) => {
@@ -134,6 +134,11 @@
               alert('unrecognized username')
               break;
           }
+          if(this.passwordInput == this.adminKey) {
+            this.$store.dispatch('changeAdminMode', true)
+          } else {
+            this.$store.dispatch('changeAdminMode', false)
+          }
           this.$store.dispatch('changeResourcesView', true)
         } else {
           alert('incorrect agency key')
@@ -141,6 +146,9 @@
       }
     },
     computed: {
+      adminKey() {
+        return this.$store.getters.adminKey
+      },
       agencyKey() {
         return this.$store.getters.agencyKey
       }

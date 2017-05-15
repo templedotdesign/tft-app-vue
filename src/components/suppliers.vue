@@ -1,36 +1,109 @@
 <template>
-  <div>
-    <i @click='handleClick(true)' class="fa fa-pencil" aria-hidden="true"></i>
-    <i @click='handleClick(false)' class="fa fa-eye" aria-hidden="true"></i>
-    <p v-show='editMode'>Edit Mode</p>
+  <div id='suppliersVue'>
+    <div id='suppliers-editor' v-show='toolsVisible'>
+      <div id='editor-tools'>
+        <h1 @click='toggleAddMode()'><i class="fa fa-plus" aria-hidden="true"></i></h1>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </div>
+      <div v-if='toolsVisible && addMode'>
+        <input v-model='supplierName' type='text' placeholder="Name:"/>
+        <input v-model='address'type='text' placeholder="URL:"/>
+        <input v-model='contactsName' type='text' placeholder="Contact's Name:"/>
+        <input v-model='contactsDetails' type='text' placeholder="Contact's Details:"/>
+        <input v-model='loginID' type='text' placeholder="Login ID:"/>
+        <input v-model='loginPassword' type='text' placeholder="Login Password:"/>
+        <input v-model='tags' type='text' placeholder="Tags:"/>
+        <input v-model='description' type='text' placeholder="Description:"/>
+        <input v-model='consortiumString' type='text' placeholder="Consortium y/n:"/>
+        <button @click='addNewSupplier()'>Submit</button>
+      </div>
+    </div>
+    <ul>
+      <li v-for='supplier in suppliers'>
+        <p v-text='supplier.name'></p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+  import { writeSupplierData } from '../utils/firebaseUtility'
+
   export default {
     name: 'suppliersVue',
+    data() {
+      return {
+        supplierName: '',
+        address: '',
+        contactsName: '',
+        contactsDetails: '',
+        loginID: '',
+        loginPassword: '',
+        tags: '',
+        description: '',
+        consortiumString: ''
+      }
+    },
     methods: {
-      handleClick(isActive) {
-        this.$store.dispatch('changeEditMode', isActive)
+      toggleAddMode() {
+        if(this.$store.getters.addMode) {
+          this.$store.dispatch('changeAddMode', false)
+        } else {
+          this.$store.dispatch('changeAddMode', true)
+        }
+      },
+      addNewSupplier() {
+        let supplier = {}
+        supplier.consortium = this.consortiumString == 'y'
+        supplier.name = this.supplierName
+        supplier.address = this.address
+        supplier.contactsName = this.contactsName
+        supplier.contactsDetails = this.contactsDetails
+        supplier.loginID = this.loginID
+        supplier.loginPassword = this.loginPassword
+        supplier.tags = this.tags
+        supplier.description = this.description
+        writeSupplierData(Date.now(), supplier)
+        this.$data.supplierName = ''
+        this.$data.address = ''
+        this.$data.contactsName = ''
+        this.$data.contactsDetails = ''
+        this.$data.loginID = ''
+        this.$data.loginPassword = ''
+        this.tags = ''
+        this.description = ''
+        this.consortiumString = ''
       }
     },
     computed: {
-      editMode() {
-        return this.$store.getters.editMode
-      }
+      toolsVisible() {
+        return this.$store.getters.toolsVisible
+      },
+      addMode() {
+        return this.$store.getters.addMode
+      },
+      suppliers() {
+        return this.$store.getters.suppliers
+      },
     }
   }
 </script>
 
 <style scoped>
-  div {
+  #suppliersVue {
     width: 80%;
-    padding-top: 5rem;
+    padding-top: 3rem;
     color: #CF5300;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
   i {
-    padding: 0 5px;
+    font-size: 1.3rem;
+  }
+
+  #editor-tools {
+    display: flex;
   }
 </style>

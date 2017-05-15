@@ -8,6 +8,7 @@
       <button class='nav-button' @click="handleClick('Resources')">Resources</button>
       <button class='nav-button' @click="handleClick('Suppliers')">Suppliers</button>
       <button class='nav-button' @click="handleClick('Learning')">Learning</button>
+      <button v-show='adminMode' class='nav-button' @click="handleClick('Users')">Users</button>
     </div>
     <div id='control-panel'></div>
   </div>
@@ -27,16 +28,25 @@
               this.$store.dispatch('changeResourcesView', true)
               this.$store.dispatch('changeSuppliersView', false)
               this.$store.dispatch('changeLearningView', false)
+              this.$store.dispatch('changeUsersView', false)
               break;
             case 'Suppliers':
               this.$store.dispatch('changeResourcesView', false)
               this.$store.dispatch('changeSuppliersView', true)
               this.$store.dispatch('changeLearningView', false)
+              this.$store.dispatch('changeUsersView', false)
               break;
             case 'Learning':
               this.$store.dispatch('changeResourcesView', false)
               this.$store.dispatch('changeSuppliersView', false)
               this.$store.dispatch('changeLearningView', true)
+              this.$store.dispatch('changeUsersView', false)
+              break;
+            case 'Users':
+              this.$store.dispatch('changeResourcesView', false)
+              this.$store.dispatch('changeSuppliersView', false)
+              this.$store.dispatch('changeLearningView', false)
+              this.$store.dispatch('changeUsersView', true)
               break;
             default:
               break;
@@ -50,6 +60,9 @@
         },
         avatarSrc() {
           return this.$store.getters.avatarSrc
+        },
+        adminMode() {
+          return this.$store.getters.adminMode
         }
       }
   }

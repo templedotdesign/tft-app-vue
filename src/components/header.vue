@@ -1,21 +1,37 @@
 <template>
   <header>
     <h1 v-text='heading'></h1>
+    <h1 v-show='adminMode' @click='toggleToolsVisibility()'><i class="fa fa-wrench" aria-hidden="true"></i></h1>
   </header>
 </template>
 
 <script>
   export default {
-      name: 'headerVue',
-      data() {
-        return {
+    name: 'headerVue',
+    data() {
+      return {
+      }
+    },
+    methods: {
+      toggleToolsVisibility() {
+        if(this.$store.getters.toolsVisible) {
+          this.$store.dispatch('changeToolsVisible', false)
+        } else {
+          this.$store.dispatch('changeToolsVisible', true)
         }
-      },
-      computed: {
-        heading() {
-          return this.$store.getters.currentHeading
+        if(this.$store.getters.addMode) {
+          this.$store.dispatch('changeAddMode', false)
         }
       }
+    },
+    computed: {
+      heading() {
+        return this.$store.getters.currentHeading
+      },
+      adminMode() {
+        return this.$store.getters.adminMode
+      }
+    }
   }
 </script>
 
@@ -29,6 +45,7 @@
     left: 0;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     background-color: #CF5300;
@@ -36,6 +53,6 @@
   }
 
   h1 {
-    margin-left: 20px;
+    margin: 0 20px;
   }
 </style>

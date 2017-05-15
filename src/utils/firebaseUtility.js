@@ -13,9 +13,32 @@ const firebaseApp = firebase.initializeApp(config)
 const database = firebase.database()
 const storage = firebase.storage()
 
+export const adminKeyRef = database.ref('adminKey')
 export const agencyKeyRef = database.ref('agencyKey')
 export const resourcesRef = database.ref('resources')
 export const learningResourcesRef = database.ref('learningResources')
+export const suppliersRef = database.ref('suppliers')
+export const usersRef = database.ref('users')
+
+export function getAdminKey() {
+  adminKeyRef.on('value', data => {
+    return data.val()
+  })
+}
+
+export function writeSupplierData(supplierId, newSupplier) {
+  firebase.database().ref('suppliers/' + supplierId).set({
+    name: newSupplier.name,
+    address: newSupplier.address,
+    contactsName: newSupplier.contactsName,
+    contactsDetails: newSupplier.contactsDetails,
+    loginID: newSupplier.loginID,
+    loginPassword: newSupplier.loginPassword,
+    tags: newSupplier.tags,
+    description: newSupplier.description,
+    consortium: newSupplier.consortium
+  });
+}
 
 export const imgAaronCondon = storage.ref('aaron-condon.jpg')
 export const imgAdamGrun = storage.ref('adam-grun.jpg')
