@@ -2,10 +2,11 @@
   <div id='learning'>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
+      <newResourceForm v-show='addMode'></newResourceForm>
     </div>
     <ul>
       <li v-for='resource in resources'>
-        <a target='_blank' :href='resource.url' class='resource-link'>{{resource.name}}</a>
+        <a target='_blank' :href='resource.address' class='resource-link'>{{resource.name}}</a>
       </li>
     </ul>
   </div>
@@ -13,11 +14,13 @@
 
 <script>
   import adminToolsVue from '../widgets/adminTools'
+  import newResourceForm from '../forms/newResource'
 
   export default {
     name: 'learningVue',
     components: {
-      adminToolsVue
+      adminToolsVue,
+      newResourceForm
     },
     computed: {
       resources() {
@@ -25,6 +28,9 @@
       },
       toolsVisible() {
         return this.$store.getters.toolsVisible
+      },
+      addMode() {
+        return this.$store.getters.addMode
       }
     }
   }

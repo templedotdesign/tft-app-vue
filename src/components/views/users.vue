@@ -2,6 +2,7 @@
   <div id='users'>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
+      <newUserForm v-show='addMode'></newUserForm>
     </div>
     <ul>
       <li v-for='user in users'>
@@ -13,11 +14,13 @@
 
 <script>
   import adminToolsVue from '../widgets/adminTools'
+  import newUserForm from '../forms/newUser'
 
   export default {
     name: 'usersVue',
     components: {
-      adminToolsVue
+      adminToolsVue,
+      newUserForm
     },
     computed: {
       users() {
@@ -25,6 +28,9 @@
       },
       toolsVisible() {
         return this.$store.getters.toolsVisible
+      },
+      addMode() {
+        return this.$store.getters.addMode
       }
     }
   }
