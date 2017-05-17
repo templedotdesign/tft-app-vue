@@ -1,25 +1,30 @@
 <template>
-  <div id='suppliersVue'>
+  <div id='suppliers'>
+    <Frame/>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
       <newSupplierForm v-show='addMode'></newSupplierForm>
     </div>
     <ul>
-      <li v-for='supplier in suppliers'>
-        <p v-text='supplier.name'></p>
+      <li v-for='(supplier, index) in suppliers'>
+        <supplierCard :name='supplier.name' :index='index'></supplierCard>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import Frame from '../widgets/frame'
   import adminToolsVue  from '../widgets/adminTools'
+  import supplierCard from '../widgets/supplierCard'
   import newSupplierForm from '../forms/newSupplier'
 
   export default {
     name: 'suppliersVue',
     components: {
+      Frame,
       adminToolsVue,
+      supplierCard,
       newSupplierForm
     },
     computed: {
@@ -37,13 +42,28 @@
 </script>
 
 <style scoped>
-  #suppliersVue {
-    width: 80%;
-    padding-top: 3rem;
+  #suppliers {
+    padding-top: 3.5rem;
     color: #CF5300;
+    /*height: calc(100vh - 4.5rem);*/
+    width: 80%;
 
     display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+
+  ul {
+    list-style-type: none;
+    width: 100%;
+    /*height: calc(100vh - 4.5rem);*/
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  li {
+    display: flex;
+    flex-basis: calc(25% - 10px);
+    margin: 5px 0;
   }
 </style>

@@ -5,6 +5,12 @@ export default {
   changeLoggedIn(state) {
     state.loggedIn = !state.loggedIn
   },
+  changeRegistrationView(state, visibility) {
+    state.registrationView = visibility
+  },
+  changeLandingView(state, visibility) {
+    state.landingView = visibility
+  },
   changeResourcesView(state, visibility) {
     state.resourcesView = visibility
   },
@@ -16,6 +22,9 @@ export default {
   },
   changeUsersView(state, visibility) {
     state.usersView = visibility
+  },
+  changeDetailsView(state, visibility) {
+    state.detailsView = visibility
   },
   changeEditMode(state, isActive) {
     state.editMode = isActive
@@ -52,5 +61,8 @@ export default {
   },
   changeToolsVisible(state, visibility) {
     state.toolsVisible = visibility
+  },
+  changeSelectedSupplier(state, supplier) {
+    state.selectedSupplier = supplier
   }
 }

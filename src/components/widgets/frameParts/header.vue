@@ -7,7 +7,7 @@
 
 <script>
   export default {
-    name: 'headerVue',
+    name: 'CustomHeader',
     data() {
       return {
       }

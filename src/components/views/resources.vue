@@ -1,5 +1,6 @@
 <template>
   <div id='resources'>
+    <Frame/>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
       <newResourceForm v-show='addMode'></newResourceForm>
@@ -13,12 +14,14 @@
 </template>
 
 <script>
+  import Frame from '../widgets/frame'
   import adminToolsVue from '../widgets/adminTools'
   import newResourceForm from '../forms/newResource'
 
   export default {
     name: 'resourcesVue',
     components: {
+      Frame,
       adminToolsVue,
       newResourceForm
     },
@@ -68,7 +71,6 @@
     flex-direction: column;
     justify-content: space-around;
 
-    border: 1px solid red;
   }
 
   li {

@@ -1,5 +1,6 @@
 <template>
   <div id='users'>
+    <Frame/>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
       <newUserForm v-show='addMode'></newUserForm>
@@ -13,12 +14,14 @@
 </template>
 
 <script>
+  import Frame from '../widgets/frame'
   import adminToolsVue from '../widgets/adminTools'
   import newUserForm from '../forms/newUser'
 
   export default {
     name: 'usersVue',
     components: {
+      Frame,
       adminToolsVue,
       newUserForm
     },

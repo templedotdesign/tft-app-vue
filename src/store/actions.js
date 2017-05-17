@@ -5,6 +5,12 @@ export default {
   changeLoggedIn(context) {
     context.commit('changeLoggedIn')
   },
+  changeRegistrationView(context, visibility) {
+    context.commit('changeRegistrationView', visibility)
+  },
+  changeLandingView(context, visibility) {
+    context.commit('changeLandingView', visibility)
+  },
   changeResourcesView(context, visibility) {
     context.commit('changeResourcesView', visibility)
   },
@@ -16,6 +22,9 @@ export default {
   },
   changeLearningView(context, visibility) {
     context.commit('changeLearningView', visibility)
+  },
+  changeDetailsView(context, visibility) {
+    context.commit('changeDetailsView', visibility)
   },
   changeEditMode(context, isActive) {
     context.commit('changeEditMode', isActive)
@@ -52,5 +61,8 @@ export default {
   },
   changeToolsVisible(context, visibility) {
     context.commit('changeToolsVisible', visibility)
+  },
+  changeSelectedSupplier(context, supplier) {
+    context.commit('changeSelectedSupplier', supplier)
   }
 }

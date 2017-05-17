@@ -9,14 +9,17 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    currentHeading: 'Resources',
+    currentHeading: '',
     copyright: 'Copyright TonsofFunTravel, 2017',
     signature: 'created by temple.design',
     loggedIn: false,
+    registrationView: true,
+    landingView: false,
     resourcesView: false,
     suppliersView: false,
     learningView: false,
     usersView: false,
+    detailsView: false,
     editMode: false,
     addMode: false,
     toolsVisible: false,
@@ -28,7 +31,8 @@ export const store = new Vuex.Store({
     resources: [],
     learningResources: [],
     suppliers: [],
-    users: []
+    users: [],
+    selectedSupplier: {}
   },
   getters,
   mutations,

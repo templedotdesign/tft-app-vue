@@ -1,5 +1,6 @@
 <template>
   <div id='learning'>
+    <Frame/>
     <div v-show='toolsVisible'>
       <adminToolsVue></adminToolsVue>
       <newResourceForm v-show='addMode'></newResourceForm>
@@ -13,12 +14,14 @@
 </template>
 
 <script>
+  import Frame from '../widgets/frame'
   import adminToolsVue from '../widgets/adminTools'
   import newResourceForm from '../forms/newResource'
 
   export default {
     name: 'learningVue',
     components: {
+      Frame,
       adminToolsVue,
       newResourceForm
     },

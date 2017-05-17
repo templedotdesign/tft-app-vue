@@ -31,105 +31,120 @@
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Aaron')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'adam-grun':
               firebase.imgAdamGrun.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Adam')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'bentz':
               firebase.imgBentz.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Bentz')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'bob-temple':
               firebase.imgBobTemple.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Bob')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'juli-maxon':
               firebase.imgJuliMaxon.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Juli')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'julie-kimmel':
               firebase.imgJulieKimmel.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Julie')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'lisa-paulin':
               firebase.imgLisaPaulin.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Lisa')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'marcy-roll':
               firebase.imgMarcyRoll.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Marcy')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'michele-inskeep':
               firebase.imgInskeep.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Michele')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'todd-inskeep':
               firebase.imgInskeep.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Todd')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'mike-bassitt':
               firebase.imgBassitt.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Mike')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'laura-bassitt':
               firebase.imgBassitt.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Laura')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'shannon-allmon':
               firebase.imgShannonAllmon.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Shannon')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'stacy-gratz':
               firebase.imgStacyGratz.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Stacy')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             case 'stephanie-temple':
               firebase.imgStephanieTemple.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
               this.$store.dispatch('changeUsername', 'Stephanie')
-              this.$store.dispatch('changeLoggedIn')
+              this.$store.dispatch('changeLandingView', true)
+              this.$store.dispatch('changeRegistrationView', false)
               break;
             default:
               alert('unrecognized username')
@@ -140,7 +155,6 @@
           } else {
             this.$store.dispatch('changeAdminMode', false)
           }
-          this.$store.dispatch('changeResourcesView', true)
         } else {
           alert('incorrect agency key')
         }

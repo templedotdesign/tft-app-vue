@@ -14,6 +14,12 @@ export default {
   loggedIn(state) {
     return state.loggedIn
   },
+  registrationView(state) {
+    return state.registrationView
+  },
+  landingView(state) {
+    return state.landingView
+  },
   resourcesView(state) {
     return state.resourcesView
   },
@@ -25,6 +31,9 @@ export default {
   },
   usersView(state) {
     return state.usersView
+  },
+  detailsView(state) {
+    return state.detailsView
   },
   addMode(state) {
     return state.addMode
@@ -61,5 +70,8 @@ export default {
   },
   users(state) {
     return state.users
+  },
+  selectedSupplier(state) {
+    return state.selectedSupplier
   }
 }

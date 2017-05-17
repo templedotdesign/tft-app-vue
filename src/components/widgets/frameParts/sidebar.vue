@@ -10,13 +10,19 @@
       <button class='nav-button' @click="handleClick('Learning')">Learning</button>
       <button v-show='adminMode' class='nav-button' @click="handleClick('Users')">Users</button>
     </div>
-    <div id='control-panel'></div>
+    <div id='control-panel'>
+      <searchTool/>
+    </div>
   </div>
 </template>
 
 <script>
+  import searchTool from '../search'
   export default {
-      name: 'sidebarVue',
+      name: 'Sidebar',
+      components: {
+        searchTool
+      },
       data() {
         return {
         }

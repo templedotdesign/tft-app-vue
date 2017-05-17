@@ -1,39 +1,36 @@
 <template>
   <div id="app">
-    <headerVue v-if='loggedIn'></headerVue>
-    <sidebarVue v-if='loggedIn'></sidebarVue>
-    <footerVue v-if='loggedIn'></footerVue>
-    <registrationVue v-else></registrationVue>
-    <resourcesVue v-show='loggedIn && resourcesView'></resourcesVue>
-    <suppliersVue v-show='loggedIn && suppliersView'></suppliersVue>
-    <learningVue v-show='loggedIn && learningView'></learningVue>
-    <usersVue v-show='loggedIn && usersView'></usersVue>
+    <registrationVue v-if='registrationView'></registrationVue>
+    <landingVue v-if='landingView'></landingVue>
+    <resourcesVue v-if='resourcesView'></resourcesVue>
+    <suppliersVue v-if='suppliersView'></suppliersVue>
+    <learningVue v-if='learningView'></learningVue>
+    <usersVue v-if='usersView'></usersVue>
+    <supplierDetails v-if='detailsView'></supplierDetails>
   </div>
 </template>
 
 <script>
-import headerVue from './frame/header'
-import footerVue from './frame/footer'
-import sidebarVue from './frame/sidebar'
+import landingVue from './views/landing'
 import resourcesVue from './views/resources'
 import suppliersVue from './views/suppliers'
 import learningVue from './views/learning'
 import registrationVue from './views/registration'
 import usersVue from './views/users'
+import supplierDetails from './views/supplierDetails'
 
 import * as firebaseUtility from '../utils/firebaseUtility'
 
 export default {
   name: 'app',
   components: {
-    headerVue,
-    footerVue,
-    sidebarVue,
+    landingVue,
     resourcesVue,
     suppliersVue,
     learningVue,
     registrationVue,
-    usersVue
+    usersVue,
+    supplierDetails
   },
   beforeCreate() {
     firebaseUtility.adminKeyRef.on('value', data => {
@@ -45,25 +42,54 @@ export default {
       this.$store.dispatch('changeAgencyKey', agencyKey)
     })
     firebaseUtility.resourcesRef.on('value', data => {
-      const resources = data.val()
+      const values = data.val()
+      const keys = Object.keys(values)
+      const resources = keys.map((key) => {
+        return {
+          name: values[key].name,
+          address: values[key].address
+        }
+      })
       this.$store.dispatch('changeResources', resources)
     })
     firebaseUtility.learningResourcesRef.on('value', data => {
-      const resources = data.val()
+      const values = data.val()
+      const keys = Object.keys(values)
+      const resources = keys.map((key) => {
+        return {
+          name: values[key].name,
+          address: values[key].address
+        }
+      })
       this.$store.dispatch('changeLearningResources', resources)
     })
     firebaseUtility.suppliersRef.on('value', data => {
-      const suppliers = data.val()
+      const values = data.val()
+      const keys = Object.keys(values)
+      const suppliers = keys.map((key) => {
+        return {
+          name: values[key].name,
+        }
+      })
       this.$store.dispatch('changeSuppliers', suppliers)
     })
     firebaseUtility.usersRef.on('value', data => {
-      const users = data.val()
+      const values = data.val()
+      const keys = Object.keys(values)
+      const users = keys.map((key) => {
+        return {
+          name: values[key].name,
+        }
+      })
       this.$store.dispatch('changeUsers', users)
     })
   },
   computed: {
-    loggedIn() {
-      return this.$store.state.loggedIn
+    registrationView() {
+      return this.$store.getters.registrationView
+    },
+    landingView() {
+      return this.$store.state.landingView
     },
     resourcesView() {
       return this.$store.getters.resourcesView
@@ -76,6 +102,9 @@ export default {
     },
     usersView() {
       return this.$store.getters.usersView
+    },
+    detailsView() {
+      return this.$store.getters.detailsView
     }
   }
 }
