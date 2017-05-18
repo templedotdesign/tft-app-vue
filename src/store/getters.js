@@ -1,3 +1,4 @@
+import _ from 'lodash'
 export default {
   currentHeading(state) {
     return state.currentHeading
@@ -44,6 +45,9 @@ export default {
   adminMode(state) {
     return state.adminMode
   },
+  useFilter(state) {
+    return state.useFilter
+  },
   toolsVisible(state) {
     return state.toolsVisible
   },
@@ -62,6 +66,9 @@ export default {
   resources(state) {
     return state.resources
   },
+  filteredResources(state) {
+    return state.filteredResources
+  },
   learningResources(state) {
     return state.learningResources
   },
@@ -70,6 +77,14 @@ export default {
   },
   users(state) {
     return state.users
+  },
+  allTags(state) {
+    const allSuppliers = state.suppliers
+    let allTags = []
+    allSuppliers.map((supplier) => {
+      allTags = _.union(allTags, supplier.tags)
+    })
+    return allTags
   },
   selectedSupplier(state) {
     return state.selectedSupplier

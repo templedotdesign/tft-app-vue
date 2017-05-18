@@ -7,8 +7,8 @@
       <input v-model='loginID' type='text' placeholder="Login ID:"/>
       <input v-model='loginPassword' type='text' placeholder="Login Password:"/>
       <input v-model='tags' type='text' placeholder="Tags:"/>
-      <input v-model='description' type='text' placeholder="Description:"/>
       <input v-model='consortiumString' type='text' placeholder="Consortium y/n:"/>
+      <textarea v-model='description' type='text' placeholder="Description:"/>
       <button @click='addSupplierToDatabase()'>Submit</button>
     </div>
 </template>
@@ -33,6 +33,14 @@
     },
     methods: {
       addSupplierToDatabase() {
+        const tagsArray = this.tags.split(',')
+        const trimmedArray = tagsArray.map((tag) => {
+          return tag.trim().toLowerCase()
+        })
+        this.handleNewSupplier(trimmedArray)
+        this.resetForm()
+      },
+      handleNewSupplier(arr) {
         let supplier = {}
         supplier.consortium = this.consortiumString == 'y'
         supplier.name = this.supplierName
@@ -41,9 +49,11 @@
         supplier.contactsDetails = this.contactsDetails
         supplier.loginID = this.loginID
         supplier.loginPassword = this.loginPassword
-        supplier.tags = this.tags
+        supplier.tags = arr
         supplier.description = this.description
         writeData('suppliers/', Date.now(), supplier)
+      },
+      resetForm() {
         this.$data.supplierName = ''
         this.$data.address = ''
         this.$data.contactsName = ''

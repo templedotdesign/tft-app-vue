@@ -2,7 +2,6 @@
   <div>
     <div id='editor-tools'>
       <h1 @click='toggleAddMode()'><i class="fa fa-plus" aria-hidden="true"></i></h1>
-      <h1 @click='toggleEditMode()'><i class="fa fa-pencil" aria-hidden="true"></i></h1>
     </div>
   </div>
 </template>

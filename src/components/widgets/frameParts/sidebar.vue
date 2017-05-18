@@ -58,6 +58,7 @@
               break;
           }
           this.$store.dispatch('changeHeading', newHeading)
+          this.$store.dispatch('changeUseFilter', false)
         }
       },
       computed: {

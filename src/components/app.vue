@@ -69,6 +69,15 @@ export default {
       const suppliers = keys.map((key) => {
         return {
           name: values[key].name,
+          address: values[key].address,
+          contactsName: values[key].contactsName,
+          contactsDetails: values[key].contactsDetails,
+          loginID: values[key].loginID,
+          loginPassword: values[key].loginPassword,
+          tags: values[key].tags,
+          description: values[key].description,
+          consortium: values[key].consortium,
+          supplierID: key
         }
       })
       this.$store.dispatch('changeSuppliers', suppliers)
@@ -125,7 +134,7 @@ export default {
 
   body {
     font-family: 'Raleway', sans-serif;
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100vw;
   }
 </style>

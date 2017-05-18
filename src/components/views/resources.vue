@@ -32,8 +32,14 @@
       }
     },
     computed: {
+      useFilter() {
+        return this.$store.useFilter
+      },
       resources() {
         return this.$store.getters.resources
+      },
+      filteredResources() {
+        return this.$store.getters.filteredResources
       },
       toolsVisible() {
         return this.$store.getters.toolsVisible

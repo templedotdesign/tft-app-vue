@@ -19,6 +19,10 @@
     },
     methods: {
       addResourceToDatabase() {
+        this.handleNewResorce()
+        this.resetForm()
+      },
+      handleNewResorce() {
         let resource = {}
         resource.name = this.name
         resource.address = this.address
@@ -27,6 +31,8 @@
         } else if (this.$store.getters.learningView) {
           writeData('learningResources/', Date.now(), resource)
         }
+      },
+      resetForm() {
         this.$data.name = ''
         this.$data.address = ''
       }

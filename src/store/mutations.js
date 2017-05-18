@@ -44,6 +44,9 @@ export default {
   changeResources(state, resources) {
     state.resources = resources
   },
+  changeFilteredResources(state, resources) {
+    state.filteredResources = resources
+  },
   changeLearningResources(state, resources) {
     state.learningResources = resources
   },
@@ -53,8 +56,14 @@ export default {
   changeUsers(state, users) {
     state.users = users
   },
+  changeTags(state, tags) {
+    state.tags = tags
+  },
   changeAdminMode(state, isActive) {
     state.adminMode = isActive;
+  },
+  changeUseFilter(state, isActive) {
+    state.useFilter = isActive
   },
   changeAddMode(state, isActive) {
     state.addMode = isActive;

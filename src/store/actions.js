@@ -35,6 +35,9 @@ export default {
   changeAdminMode(context, isActive) {
     context.commit('changeAdminMode', isActive)
   },
+  changeUseFilter(context, isActive) {
+    context.commit('changeUseFilter', isActive)
+  },
   changeAgencyKey(context, newKey) {
     context.commit('changeAgencyKey', newKey)
   },
@@ -50,6 +53,9 @@ export default {
   changeResources(context, resources) {
     context.commit('changeResources', resources)
   },
+  changeFilteredResources(context, resources) {
+    context.commit('changeFilteredResources', resources)
+  },
   changeLearningResources(context, resources) {
     context.commit('changeLearningResources', resources)
   },
@@ -58,6 +64,9 @@ export default {
   },
   changeUsers(context, users) {
     context.commit('changeUsers', users)
+  },
+  changeTags(context, tags) {
+    context.commit('changeTags', tags)
   },
   changeToolsVisible(context, visibility) {
     context.commit('changeToolsVisible', visibility)

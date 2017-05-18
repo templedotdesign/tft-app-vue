@@ -21,11 +21,17 @@
     },
     methods: {
       addUserToDatabase() {
+        this.handleNewUser()
+        this.resetForm()
+      },
+      handleNewUser() {
         let user = {}
         user.username = this.username
         user.name = this.name
         user.avatarPath = this.avatarPath
         writeData('users/', Date.now(), user)
+      },
+      resetForm() {
         this.$data.username=''
         this.$data.name=''
         this.$data.avatarPath=''

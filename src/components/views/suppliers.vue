@@ -10,6 +10,12 @@
         <supplierCard :name='supplier.name' :index='index'></supplierCard>
       </li>
     </ul>
+    <ul v-show='adminMode'>
+      <li v-for='tag in tags'>
+        {{tag}}
+      </li>
+
+    </ul>
   </div>
 </template>
 
@@ -37,18 +43,26 @@
       suppliers() {
         return this.$store.getters.suppliers
       },
+      tags() {
+        return this.$store.getters.allTags
+        // console.log(this.$store.getters.allTags)
+      },
+      adminMode() {
+        return this.$store.getters.adminMode
+      }
     }
   }
 </script>
 
 <style scoped>
   #suppliers {
-    padding-top: 3.5rem;
+    padding: 3.5rem 0;
     color: #CF5300;
     /*height: calc(100vh - 4.5rem);*/
     width: 80%;
 
     display: flex;
+    flex-direction: column;
   }
 
   ul {
