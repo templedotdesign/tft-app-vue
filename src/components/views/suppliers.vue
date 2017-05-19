@@ -45,7 +45,6 @@
       },
       tags() {
         return this.$store.getters.allTags
-        // console.log(this.$store.getters.allTags)
       },
       adminMode() {
         return this.$store.getters.adminMode
@@ -77,7 +76,7 @@
 
   li {
     display: flex;
-    flex-basis: calc(25% - 10px);
+    flex-basis: calc(20% - 10px);
     margin: 5px 0;
   }
 </style>

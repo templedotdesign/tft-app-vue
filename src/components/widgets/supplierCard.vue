@@ -23,7 +23,7 @@
 
 <style scoped>
 div {
-  height: 100%;
+  height: 80px;
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
