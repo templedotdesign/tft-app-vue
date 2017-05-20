@@ -6,7 +6,7 @@
       <newSupplierForm v-show='addMode'></newSupplierForm>
     </div>
     <ul>
-      <li v-for='(supplier, index) in suppliers'>
+      <li v-for='(supplier, index) in visibleSuppliers'>
         <supplierCard :name='supplier.name' :index='index'></supplierCard>
       </li>
     </ul>
@@ -42,6 +42,9 @@
       },
       suppliers() {
         return this.$store.getters.suppliers
+      },
+      visibleSuppliers() {
+        return this.$store.getters.visibleSuppliers
       },
       tags() {
         return this.$store.getters.allTags

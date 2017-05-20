@@ -75,6 +75,9 @@ export default {
   suppliers(state) {
     return state.suppliers
   },
+  visibleSuppliers(state) {
+    return state.visibleSuppliers
+  },
   users(state) {
     return state.users
   },
@@ -84,7 +87,8 @@ export default {
     allSuppliers.map((supplier) => {
       allTags = _.union(allTags, supplier.tags)
     })
-    return allTags
+    allTags = allTags.filter(tag => tag.trim() != '');
+    return allTags.sort()
   },
   selectedSupplier(state) {
     return state.selectedSupplier

@@ -53,6 +53,9 @@ export default {
   changeSuppliers(state, suppliers) {
     state.suppliers = suppliers
   },
+  changeVisibleSuppliers(state, suppliers) {
+    state.visibleSuppliers = suppliers
+  },
   changeUsers(state, users) {
     state.users = users
   },

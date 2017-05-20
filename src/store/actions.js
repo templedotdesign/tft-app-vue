@@ -62,6 +62,9 @@ export default {
   changeSuppliers(context, suppliers) {
     context.commit('changeSuppliers', suppliers)
   },
+  changeVisibleSuppliers(context, suppliers) {
+    context.commit('changeVisibleSuppliers', suppliers)
+  },
   changeUsers(context, users) {
     context.commit('changeUsers', users)
   },

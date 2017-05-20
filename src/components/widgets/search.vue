@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
   export default {
     name:'searchTool',
     data() {
@@ -17,41 +18,32 @@
     },
     methods: {
       search() {
-        const currentView = this.$store.getters.currentHeading
-        switch(currentView) {
-          case 'Resources':
-            const resources = this.$store.getters.resources
-            const filteredResources = resources.filter((resource) => {
-              return resource.name.toLowerCase().includes(this.query)
+        const allSuppliers = this.$store.getters.suppliers
+        let filteredSuppliers = []
+        if(this.query == '') {
+          this.$store.dispatch('changeVisibleSuppliers', this.$store.getters.suppliers)
+        } else {
+          filteredSuppliers = allSuppliers.map((supplier) => {
+            if(supplier.name.search(this.query) > - 1) {
+              return supplier
+            }
+            supplier.tags.map((tag) => {
+              if(tag.search(this.query) > -1) {
+                return supplier
+              }
             })
-            this.$store.dispatch('changeFilteredResources', filteredResources)
-            break;
-          case 'Suppliers':
-          const suppliers = this.$store.getters.suppliers
-          const filteredSuppliers = suppliers.filter((supplier) => {
-            return supplier.name.toLowerCase().includes(this.query)
           })
-          break;
-          case 'Learning':
-          const learningResources = this.$store.getters.learningResources
-          const filteredLearningResources = learningResources.filter((resource) => {
-            return resource.name.toLowerCase().includes(this.query)
+          this.filteredSuppliers = filteredSuppliers.map((supplier) => {
+            return supplier !== undefined
           })
-          break;
-          case 'Users':
-          const users = this.$store.getters.users
-          const filteredUsers = users.filter((user) => {
-            return user.name.toLowerCase().includes(this.query)
-          })
-          break;
-          default:
-          break;
+          console.log(filteredSuppliers)
+          if(filteredSuppliers.length > 0) {
+              this.$store.dispatch('changeVisibleSuppliers', this.filteredSuppliers)
+          }
         }
-        this.$store.dispatch('changeUseFilter', true)
       },
       turnOffFilter() {
-        this.$store.dispatch('changeUseFilter', false)
-        this.$data.query = ''
+        this.query = ''
       }
     }
   }

@@ -33,6 +33,7 @@ export const store = new Vuex.Store({
     filteredResources: [],
     learningResources: [],
     suppliers: [],
+    visibleSuppliers: [],
     users: [],
     selectedSupplier: {}
   },
