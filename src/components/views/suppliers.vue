@@ -6,7 +6,7 @@
       <newSupplierForm v-show='addMode'></newSupplierForm>
     </div>
     <ul>
-      <li v-for='(supplier, index) in visibleSuppliers'>
+      <li v-for='(supplier, index) in suppliers'>
         <supplierCard :name='supplier.name' :index='index'></supplierCard>
       </li>
     </ul>

@@ -22,6 +22,13 @@
 <style scoped>
   div {
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 5rem;
+    padding-right: 25px;
   }
 
   img {

@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div id='landing'>
     <welcomeBanner></welcomeBanner>
-    <button @click="handleClick('Resources')">Resources</button>
-    <button @click="handleClick('Suppliers')">Suppliers</button>
-    <button @click="handleClick('Learning')">Learning</button>
-    <button @click="handleClick('Users')" v-show='adminMode'>Users</button>
+    <h3>Everything you need to have tons of fun selling travel!</h3>
+    <div id='buttons'>
+      <button @click="handleClick('Resources')">Resources</button>
+      <button @click="handleClick('Suppliers')">Suppliers</button>
+      <button @click="handleClick('Learning')">Learning</button>
+      <button @click="handleClick('Users')" v-show='adminMode'>Users</button>
+    </div>
   </div>
 </template>
 
@@ -60,4 +63,33 @@
   }
 </script>
 
-<style></style>
+<style scoped>
+  #landing {
+    background-color: #3378B8;
+    color: white;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  #buttons {
+    display: flex;
+  }
+
+  button {
+    padding: 50px;
+    margin: 0 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #3378B8;
+    border: 1px solid white;
+    font-size: 1.3rem;
+  }
+</style>
