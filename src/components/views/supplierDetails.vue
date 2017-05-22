@@ -92,7 +92,7 @@
         if(this.$store.getters.selectedSupplier.loginPassword == '') {
           return ''
         } else {
-          return "login password: " + this.$store.getters.selectedSupplier.loginPassword
+          return "Login password: " + this.$store.getters.selectedSupplier.loginPassword
         }
       },
       description() {
