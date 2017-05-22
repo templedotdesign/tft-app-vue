@@ -25,7 +25,8 @@
     methods: {
       login() {
         if(this.passwordInput == this.agencyKey || this.passwordInput == this.adminKey) {
-          switch(this.nameInput) {
+          const loweredName = this.nameInput.toLowerCase()
+          switch(loweredName) {
             case 'aaron-condon':
               firebase.imgAaronCondon.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
