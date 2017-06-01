@@ -39,6 +39,12 @@
         inFavorites: false,
       }
     },
+    beforeMount() {
+      const favorites = this.$store.getters.favorites
+      if(favorites.includes(this.$store.getters.selectedSupplier.supplierID)) {
+        this.inFavorites = true
+      }
+    },
     methods: {
       closeDetailsView() {
         this.$store.dispatch('changeSuppliersView', true)

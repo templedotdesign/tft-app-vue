@@ -13,6 +13,7 @@
     <div id='control-panel'>
       <searchTool/>
       <favoritesTool/>
+      <membersTool/>
     </div>
   </div>
 </template>
@@ -20,11 +21,13 @@
 <script>
   import searchTool from '../search'
   import favoritesTool from '../favorites'
+  import membersTool from '../consortium'
   export default {
       name: 'Sidebar',
       components: {
         searchTool,
-        favoritesTool
+        favoritesTool,
+        membersTool
       },
       data() {
         return {
