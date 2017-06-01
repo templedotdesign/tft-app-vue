@@ -29,7 +29,7 @@
         user.username = this.username
         user.name = this.name
         user.avatarPath = this.avatarPath
-        writeData('users/', Date.now(), user)
+        writeData('users/', Date.now(), '', '', user)
       },
       resetForm() {
         this.$data.username=''

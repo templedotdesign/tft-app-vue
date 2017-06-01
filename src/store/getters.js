@@ -63,6 +63,12 @@ export default {
   avatarSrc(state) {
     return state.avatarSrc
   },
+  userID(state) {
+    return state.userID  
+  },
+  favorites(state) {
+    return state.favorites
+  },
   resources(state) {
     return state.resources
   },

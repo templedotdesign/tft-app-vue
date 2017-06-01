@@ -23,27 +23,20 @@ import _ from 'lodash'
         if(this.query == '') {
           this.$store.dispatch('changeVisibleSuppliers', this.$store.getters.suppliers)
         } else {
-          filteredSuppliers = allSuppliers.map((supplier) => {
-            if(supplier.name.search(this.query) > - 1) {
+          filteredSuppliers = allSuppliers.filter((supplier) => {
+            const tagsArray = Object.values(supplier.tags)
+            if(supplier.name.toLowerCase().search(this.query.toLowerCase()) > - 1 || tagsArray.includes(this.query.toLowerCase())) {
               return supplier
             }
-            supplier.tags.map((tag) => {
-              if(tag.search(this.query) > -1) {
-                return supplier
-              }
-            })
           })
-          this.filteredSuppliers = filteredSuppliers.map((supplier) => {
-            return supplier !== undefined
-          })
-          console.log(filteredSuppliers)
           if(filteredSuppliers.length > 0) {
-              this.$store.dispatch('changeVisibleSuppliers', this.filteredSuppliers)
+              this.$store.dispatch('changeVisibleSuppliers', filteredSuppliers)
           }
         }
       },
       turnOffFilter() {
         this.query = ''
+        this.$store.dispatch('changeVisibleSuppliers', this.$store.getters.suppliers)
       }
     }
   }

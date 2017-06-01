@@ -51,7 +51,7 @@
         supplier.loginPassword = this.loginPassword
         supplier.tags = arr
         supplier.description = this.description
-        writeData('suppliers/', Date.now(), supplier)
+        writeData('suppliers/', Date.now(), '', '', supplier)
       },
       resetForm() {
         this.$data.supplierName = ''

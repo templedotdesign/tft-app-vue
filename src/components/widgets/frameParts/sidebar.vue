@@ -12,16 +12,19 @@
     </div>
     <div id='control-panel'>
       <searchTool/>
+      <favoritesTool/>
     </div>
   </div>
 </template>
 
 <script>
   import searchTool from '../search'
+  import favoritesTool from '../favorites'
   export default {
       name: 'Sidebar',
       components: {
-        searchTool
+        searchTool,
+        favoritesTool
       },
       data() {
         return {

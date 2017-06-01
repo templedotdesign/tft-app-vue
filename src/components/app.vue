@@ -81,6 +81,7 @@ export default {
         }
       })
       this.$store.dispatch('changeSuppliers', suppliers)
+      this.$store.dispatch('changeVisibleSuppliers', suppliers)
     })
     firebaseUtility.usersRef.on('value', data => {
       const values = data.val()
@@ -88,8 +89,11 @@ export default {
       const users = keys.map((key) => {
         return {
           name: values[key].name,
+          username: values[key].username,
+          userID: key,
+          favorites: values[key].favorites
         }
-      })
+      }) 
       this.$store.dispatch('changeUsers', users)
     })
   },

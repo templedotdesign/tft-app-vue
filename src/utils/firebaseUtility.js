@@ -20,8 +20,8 @@ export const learningResourcesRef = database.ref('learningResources')
 export const suppliersRef = database.ref('suppliers')
 export const usersRef = database.ref('users')
 
-export function writeData(path, id, data={}) {
-  firebase.database().ref(path + id).set(data)
+export function writeData(path, id, child, childId, data={}) {
+  firebase.database().ref(path + id + child + childId).set(data)
 }
 
 export const imgAaronCondon = storage.ref('aaron-condon.jpg')

@@ -1,19 +1,20 @@
 <template>
     <div>
-      <input v-model='newName' type='text' :value='name'/>
-      <input v-model='newAddress'type='text' :value='address'/>
-      <input v-model='newContactsName' type='text' :value='contactsName'/>
-      <input v-model='newContactsDetails' type='text' :value='contactsDetails'/>
-      <input v-model='newLoginID' type='text' :value='loginID'/>
-      <input v-model='newLoginPassword' type='text' :value='loginPassword'/>
-      <input v-model='newTags' type='text' :value='tagsString'/>
-      <input v-model='newDescription' type='text' :value='description'/>
-      <input v-model='newConsortiumString' type='text' :value='consortiumString'/>
+      <input v-model='newName' type='text' placeholder='name'/>
+      <input v-model='newAddress'type='text' placeholder='address'/>
+      <input v-model='newContactsName' type='text' placeholder='contactsName'/>
+      <input v-model='newContactsDetails' type='text' placeholder='contactsDetails'/>
+      <input v-model='newLoginID' type='text' placeholder='loginID'/>
+      <input v-model='newLoginPassword' type='text' placeholder='loginPassword'/>
+      <input v-model='newTags' type='text' placeholder='tags'/>
+      <input v-model='newDescription' type='text' placeholder='description'/>
+      <input v-model='newConsortiumString' type='text' placeholder='consortium y/n'/>
       <button @click='addSupplierToDatabase()'>Submit</button>
     </div>
 </template>
 
 <script>
+import _ from 'lodash'
   import { writeData } from '../../utils/firebaseUtility'
 
   export default {
@@ -41,17 +42,53 @@
       },
       handleNewSupplier() {
         let supplier = {}
-        const tagsArray = this.newTags.split(',')
-        supplier.consortium = this.newConsortiumString == 'y'
-        supplier.name = this.newName
-        supplier.address = this.newAddress
-        supplier.contactsName = this.newContactsName
-        supplier.contactsDetails = this.newContactsDetails
-        supplier.loginID = this.newLoginID
-        supplier.loginPassword = this.loginPassword
-        supplier.tags = this.tagsArray
-        supplier.description = this.description
-        writeData('suppliers/', this.$store.getters.selectedSupplier.supplierID, supplier)
+        if(this.newConsortiumString != '') {
+          supplier.consortium = this.newConsortiumString == 'y'
+        } else{
+          supplier.consortium = this.consortiumString == 'y'
+        }
+        if(this.newName != '') {
+          supplier.name = this.newName
+        } else{
+          supplier.name = this.name
+        }
+        if(this.newAddress != '') {
+          supplier.address = this.newAddress
+        } else{
+          supplier.address = this.address
+        }
+        if(this.newContactsName != '') {
+          supplier.contactsName = this.newContactsName
+        } else{
+          supplier.contactsName = this.contactsName
+        }
+        if(this.newContactsDetails != '') {
+          supplier.contactsDetails = this.newContactsDetails
+        } else{
+          supplier.contactsDetails = this.contactsDetails
+        }
+        if(this.newLoginID != '') {
+          supplier.loginID = this.newLoginID
+        } else{
+          supplier.loginID = this.loginID
+        }
+        if(this.newLoginPassword != '') {
+          supplier.loginPassword = this.newLoginPassword
+        } else{
+          supplier.loginPassword = this.loginPassword
+        }
+        if(this.newTags != '') {
+          const newArray = this.newTags.split(',')
+          supplier.tags = _.union(this.tags, newArray)
+        } else{
+          supplier.tags = this.tags
+        }
+        if(this.newDescription != '') {
+          supplier.description = this.newDescription
+        } else{
+          supplier.description = this.description
+        }
+        writeData('suppliers/', this.$store.getters.selectedSupplier.supplierID, '', '', supplier)
       },
       resetForm() {
         this.$data.newName = ''

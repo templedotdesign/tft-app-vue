@@ -29,6 +29,8 @@ export const store = new Vuex.Store({
     adminKey: 0,
     username: '',
     avatarSrc: '',
+    userID: '',
+    favorites: [],
     resources: [],
     filteredResources: [],
     learningResources: [],

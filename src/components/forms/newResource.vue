@@ -29,7 +29,7 @@
         if(this.$store.getters.resourcesView) {
           writeData('resources/', Date.now(), resource)
         } else if (this.$store.getters.learningView) {
-          writeData('learningResources/', Date.now(), resource)
+          writeData('learningResources/', Date.now(), '', '', resource)
         }
       },
       resetForm() {

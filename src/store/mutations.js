@@ -41,6 +41,15 @@ export default {
   changeAvatarSrc(state, newUrl) {
     state.avatarSrc = newUrl
   },
+  changeUserID(state, id) {
+    state.userID = id
+  },
+  changeFavorites(state, favorites) {
+    state.favorites = favorites
+  },
+  addFavorite(state, favorite) {
+    state.favorites.push(favorite)
+  },
   changeResources(state, resources) {
     state.resources = resources
   },

@@ -50,6 +50,15 @@ export default {
   changeAvatarSrc(context, newUrl) {
     context.commit('changeAvatarSrc', newUrl)
   },
+  changeUserID(context, id) {
+    context.commit('changeUserID', id)
+  },
+  changeFavorites(context, favorites) {
+    context.commit('changeFavorites', favorites)
+  },
+  addFavorite(context, favorite) {
+    context.commit('addFavorite', favorite)
+  },
   changeResources(context, resources) {
     context.commit('changeResources', resources)
   },

@@ -27,6 +27,8 @@
 
 <script>
   import editSupplierForm from '../forms/editSupplier'
+  import { writeData } from '../../utils/firebaseUtility'
+
   export default {
     name: 'supplierDetails',
     components: {
@@ -51,6 +53,11 @@
       },
       addToFavorites() {
         this.inFavorites = !this.inFavorites
+        const id = this.$store.getters.selectedSupplier.supplierID
+        if(this.$store.getters.favorites.includes(id) == false) {
+          this.$store.dispatch('addFavorite', id)
+          writeData('users/', this.$store.getters.userID, '/favorites/', Date.now(), id)
+        }
       }
     },
     computed: {
