@@ -3,7 +3,6 @@
     <input v-model='query' type='text' placeholder='enter a name or tag...'/>
     <i @click='search()' class="fa fa-search" aria-hidden="true"></i>
     <i @click='turnOffFilter()' class="fa fa-ban" aria-hidden="true"></i>
-    <p v-text='query'></p>
   </div>
 </template>
 
@@ -42,6 +41,33 @@ import _ from 'lodash'
   }
 </script>
 
-<style>
+<style scoped>
+  div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
+  input {
+    outline: none;
+    border: none;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: .8rem;
+    color: white;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+  }
+  input::placeholder {
+    color: white;
+  }
+
+  i {
+    transition: .33s;
+  }
+
+  i:hover {
+    color: #CF5300;
+  }
 </style>

@@ -61,14 +61,14 @@
               }
               this.$store.dispatch('changeUserID', userID)
               break;
-            case 'bentz':
+            case 'john-bentz':
               firebase.imgBentz.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
               })
-              this.$store.dispatch('changeUsername', 'Bentz')
+              this.$store.dispatch('changeUsername', 'John')
               this.$store.dispatch('changeLandingView', true)
               this.$store.dispatch('changeRegistrationView', false)
-              user = users.find((user) => { return user.username == 'bentz' })
+              user = users.find((user) => { return user.username == 'john-bentz' })
               userID = user.userID
               if(user.favorites) {
                 favorites = Object.values(user.favorites)
@@ -76,6 +76,21 @@
               }
               this.$store.dispatch('changeUserID', userID)
               break;
+              case 'dena-bentz':
+                firebase.imgBentz.getDownloadURL().then((url) => {
+                  this.$store.dispatch('changeAvatarSrc', url)
+                })
+                this.$store.dispatch('changeUsername', 'Dena')
+                this.$store.dispatch('changeLandingView', true)
+                this.$store.dispatch('changeRegistrationView', false)
+                user = users.find((user) => { return user.username == 'dena-bentz' })
+                userID = user.userID
+                if(user.favorites) {
+                  favorites = Object.values(user.favorites)
+                  this.$store.dispatch('changeFavorites', favorites)
+                }
+                this.$store.dispatch('changeUserID', userID)
+                break;
             case 'bob-temple':
               firebase.imgBobTemple.getDownloadURL().then((url) => {
                 this.$store.dispatch('changeAvatarSrc', url)
@@ -328,5 +343,11 @@
     color: white;
     border: 1px solid white;
     background-color: transparent;
+    transition: .5s;
+  }
+  .reg-btn:hover {
+    background-color: white;
+    color: #CF5300;
+    box-shadow: 1px 1px 5px black;
   }
 </style>

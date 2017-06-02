@@ -85,11 +85,17 @@
 
   button {
     padding: 50px;
-    margin: 0 10px;
+    margin: 0 30px;
     border-radius: 5px;
     color: white;
     background-color: #3378B8;
     border: 1px solid white;
     font-size: 1.3rem;
+    transition: .5s;
+  }
+  button:hover {
+    background-color: white;
+    color: #CF5300;
+    box-shadow: 1px 1px 5px black;
   }
 </style>

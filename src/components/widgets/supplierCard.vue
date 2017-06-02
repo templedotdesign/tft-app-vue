@@ -27,10 +27,18 @@ div {
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   border: 1px solid #CF5300;
   border-radius: 5px;
   padding: 20px 0;
+  transition: .5s;
+  text-align: center;
+}
+
+div:hover {
+  background-color: #3378B8;
+  color: white;
+  box-shadow: 1px 1px 5px black;
 }
 
 p {

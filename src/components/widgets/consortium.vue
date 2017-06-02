@@ -30,4 +30,19 @@
     }
   }
 </script>
-<style></style>
+<style scoped>
+  div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  i {
+    font-size: 2.5rem;
+    transition: .33s;
+  }
+  i:hover {
+    color: #CF5300;
+  }
+</style>

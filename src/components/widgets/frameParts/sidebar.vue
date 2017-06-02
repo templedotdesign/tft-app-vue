@@ -10,7 +10,7 @@
       <button class='nav-button' @click="handleClick('Learning')">Learning</button>
       <button v-show='adminMode' class='nav-button' @click="handleClick('Users')">Users</button>
     </div>
-    <div id='control-panel'>
+    <div v-if='suppliersView' id='control-panel'>
       <searchTool/>
       <favoritesTool/>
       <membersTool/>
@@ -76,6 +76,9 @@
         },
         adminMode() {
           return this.$store.getters.adminMode
+        },
+        suppliersView() {
+          return this.$store.getters.suppliersView
         }
       }
   }
@@ -139,6 +142,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .5s;
+  }
+
+  .nav-button:hover {
+    background-color: white;
+    color: #CF5300;
+    box-shadow: 1px 1px 5px black;
   }
 
   #control-panel {
@@ -146,5 +156,6 @@
     width: 80%;
 
     border: 1px solid white;
+    border-radius: 5px;
   }
 </style>

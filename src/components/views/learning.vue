@@ -79,5 +79,12 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s;
+}
+
+a:hover {
+  background-color: #3378B8;
+  color: white;
+  box-shadow: 1px 1px 5px black;
 }
 </style>

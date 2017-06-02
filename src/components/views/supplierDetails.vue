@@ -3,7 +3,7 @@
     <div id='buttons'>
       <a target='_blank' :href='address'><i class="fa fa-play" aria-hidden="true"></i></a>
       <i v-show='consortium' class="fa fa-star" aria-hidden="true"></i>
-      <i v-if='inFavorites' @click='addToFavorites()' class="fa fa-heart" aria-hidden="true"></i>
+      <i v-if='inFavorites' class="fa fa-heart" aria-hidden="true"></i>
       <i v-else @click='addToFavorites()' class="fa fa-heart-o" aria-hidden="true"></i>
       <i v-show='adminMode' @click='toggleToolsVisible()' class="fa fa-pencil" aria-hidden="true"></i>
       <i @click='closeDetailsView()' class="fa fa-times" aria-hidden="true"></i>
