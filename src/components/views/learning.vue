@@ -69,6 +69,7 @@ li {
   align-items: center;
   flex-basis: 50px;
   padding: 0 5px;
+  transition: .5s;
 }
 
 a {
@@ -82,9 +83,11 @@ a {
   transition: .5s;
 }
 
-a:hover {
+li:hover {
   background-color: #3378B8;
-  color: white;
   box-shadow: 1px 1px 5px black;
+}
+a:hover {
+  color: white;
 }
 </style>
