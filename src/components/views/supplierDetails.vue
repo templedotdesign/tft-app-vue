@@ -5,7 +5,7 @@
       <i v-show='consortium' class="fa fa-star" aria-hidden="true"></i>
       <i v-if='inFavorites' class="fa fa-heart" aria-hidden="true"></i>
       <a href='#' v-else><i @click='addToFavorites()' class="fa fa-heart-o" aria-hidden="true"></i></a>
-      <i v-show='adminMode' @click='toggleToolsVisible()' class="fa fa-pencil" aria-hidden="true"></i>
+      <a href='#' v-show='adminMode'><i @click='toggleToolsVisible()' class="fa fa-pencil" aria-hidden="true"></i></a>
       <a href='#'><i @click='closeDetailsView()' class="fa fa-times" aria-hidden="true"></i></a>
     </div>
     <editSupplierForm v-if='toolsVisible'/>
