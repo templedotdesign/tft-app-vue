@@ -64,7 +64,7 @@ export default {
     return state.avatarSrc
   },
   userID(state) {
-    return state.userID  
+    return state.userID
   },
   favorites(state) {
     return state.favorites
@@ -82,7 +82,7 @@ export default {
     return state.suppliers
   },
   visibleSuppliers(state) {
-    return state.visibleSuppliers
+    return _.sortBy(state.visibleSuppliers, function(supplier) { return supplier.name.toLowerCase() })
   },
   users(state) {
     return state.users
